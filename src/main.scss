@@ -1,0 +1,29 @@
+@import './assets/variables.scss';
+@import './assets/fonts.scss';
+
+// MarkerGen import elements styles
+// MarkerGen import components styles
+@import './components/Footer/index.scss';
+@import './components/TimeLine/index.scss';
+@import './components/Header/index.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+    margin: 0;
+}
+
+#main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

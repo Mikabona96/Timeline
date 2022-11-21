@@ -1,0 +1,1 @@
+@import './elements/__elementName__(pascalCase)/index.scss';
