@@ -44,7 +44,11 @@ export const timeLineFunction = () => {
 
         const slideAnimationHandler = (i: number) => {
             i > 0 ? arrowL.style.display = 'block' : arrowL.style.display = 'none';
-            btnContainer.style.transform = rtl ? `translateX(${btnWidth * (i - 1)}px)` : `translateX(-${btnWidth * (i - 1)}px)`;
+            if (rtl && i === 0) {
+                btnContainer.style.transform = `translateX(${0}px)`;
+            } else {
+                btnContainer.style.transform = rtl ? `translateX(${btnWidth * (i - 1)}px)` : `translateX(-${btnWidth * (i - 1)}px)`;
+            }
             setTimeout(() => {
                 slidesWrapper.style.transform = rtl ? `translateX(${i * width}px)` : `translateX(-${i * width}px)`;
                 slides[ i ].classList.add('active');

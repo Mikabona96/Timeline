@@ -265,6 +265,7 @@
     .TimeLine.rtl {
         & .slider {
             & .slides {
+                flex-direction: row-reverse;
                 & .slide {
                     text-align: end;
                     & .year {
@@ -277,6 +278,13 @@
                         right: 77px;
                     }
                 }
+            }
+            & .buttons {
+                flex-direction: row-reverse;
+            }
+            & .arrow-left {
+                right: 1%;
+                transform: translateY(-25%) rotate(180deg);
             }
         }
     }
@@ -416,6 +424,7 @@
     .TimeLine.rtl {
         & .slider {
             & .slides {
+                flex-direction: column;
                 & .slide {
                     text-align: end;
                     & .year {
