@@ -23,36 +23,31 @@ export const headerFunction = () => {
         const header = (document.querySelector('.Header')) as HTMLElement;
         const dropMenu = (document.querySelector('.Header .drop-menu')) as HTMLDivElement;
         const dropMenuItems = document.querySelectorAll('.drop-menu .drop-menu-item');
-        const width = header.clientWidth;
+        let width = window.innerWidth;
 
-        const displayDropMenu = () => {
-            if (width >= 1360) {
-                dropMenu.addEventListener('mouseleave', () => {
-                    header.classList.remove('active');
-                    dropMenu.style.display = 'none';
-                });
-                const dropMenuHandler = (idx: number) => {
-                    dropMenuItems.forEach((item, i) => {
-                        item.classList.remove('active');
-                        if (idx === i) {
-                            item.classList.add('active');
-                        }
-                    });
-                };
-                links.forEach((link, idx) => {
-                    link.addEventListener('mouseenter', (event) => {
-                        event.preventDefault();
-                        header.classList.add('active');
-                        dropMenu.style.display = 'flex';
-
-                        dropMenuHandler(idx);
-                    });
-                });
-            }
+        dropMenu.addEventListener('mouseleave', () => {
+            header.classList.remove('active');
+            dropMenu.style.display = 'none';
+        });
+        const dropMenuHandler = (idx: number) => {
+            dropMenuItems.forEach((item, i) => {
+                item.classList.remove('active');
+                if (idx === i) {
+                    item.classList.add('active');
+                }
+            });
         };
+        links.forEach((link, idx) => {
+            link.addEventListener('mouseenter', (event) => {
+                event.preventDefault();
+                if (width >= 1360) {
+                    header.classList.add('active');
+                    dropMenu.style.display = 'flex';
 
-        displayDropMenu();
-
+                    dropMenuHandler(idx);
+                }
+            });
+        });
 
         open?.addEventListener('click', () => {
             if (width <= 992) {
@@ -71,7 +66,7 @@ export const headerFunction = () => {
             }, 1000);
         });
         window.addEventListener('resize', () => {
-            displayDropMenu();
+            width = window.innerWidth;
         });
     });
 };

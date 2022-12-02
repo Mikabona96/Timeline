@@ -8,12 +8,45 @@ import './main.scss';
 import './components';
 import './elements';
 
+const rtlSwitcher = document.querySelector('.header-links-second-row .header-link.rtl');
+
 export let rtl = false;
 
 const TimeLine = (document.querySelector('.TimeLine')) as HTMLElement;
 const header = (document.querySelector('.Header')) as HTMLElement;
 const footer = (document.querySelector('.Footer')) as HTMLElement;
+const slidesWrapper = (document.querySelector('.slides')) as HTMLElement;
+const btnContainer = (document.querySelector('.buttons')) as HTMLElement;
+const scale = (document.querySelector('.scales')) as HTMLElement;
+const slider =  (document.querySelector('.slider')) as HTMLElement;
+const btn = (document.querySelector('.btn')) as HTMLElement;
+let btnWidth = btn.offsetWidth;
+let width = slider.offsetWidth;
 
-rtl ? TimeLine.classList.add('rtl') : TimeLine.classList.remove('rtl');
-rtl ? header.classList.add('rtl') : header.classList.remove('rtl');
-rtl ? footer.classList.add('rtl') : footer.classList.remove('rtl');
+export const idx = {
+    value: 0,
+};
+
+rtlSwitcher?.addEventListener('click', () => {
+    console.log(idx);
+
+    rtl ? rtlSwitcher.innerHTML = 'RTL' : rtlSwitcher.innerHTML = 'LTR';
+    rtl = !rtl;
+    rtl ? TimeLine.classList.add('rtl') : TimeLine.classList.remove('rtl');
+    rtl ? header.classList.add('rtl') : header.classList.remove('rtl');
+    rtl ? footer.classList.add('rtl') : footer.classList.remove('rtl');
+    setTimeout(() => {
+        slidesWrapper.style.transition = 'none';
+        scale.style.transition = 'none';
+        btnContainer.style.transition = 'none';
+    }, 2000);
+    slidesWrapper.style.transform = rtl ? `translateX(${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
+    scale.style.transform = rtl ? `translateX(-${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
+    btnContainer.style.transform = rtl ? `translateX(${btnWidth * idx.value}px)` : `translateX(-${btnWidth * (idx.value - 1)}px)`;
+    setTimeout(() => {
+        slidesWrapper.style.transition = '1.6s ease';
+        scale.style.transition = '3s ease';
+        btnContainer.style.transition = ' 0.1s ease;';
+    }, 2200);
+});
+

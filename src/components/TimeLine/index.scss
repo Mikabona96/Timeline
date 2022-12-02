@@ -4,9 +4,9 @@
 
 @media (max-width: 1359px) {
     .TimeLine {
+        margin-top: 32px;
         width: 100%;
         height: 750px;
-        margin-top: 93px;
         background: black;
         & .slider {
             width: 100%;
@@ -62,7 +62,7 @@
                         left: 77px;
                         top: 572px;
                         width: 560px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
@@ -72,17 +72,6 @@
     
                         color: #FFFFFF;
                     }
-                    // & .frame {
-                    //     transition: 2s ease;
-                    //     position: absolute;
-                    //     top: 0px;
-                    //     left: 0px;
-                    //     width: 100%;
-                    //     height: 100%;
-                    //     border: 25px solid black;
-                    //     border-top: 33px solid black;
-                    //     border-bottom: 33px solid black;
-                    // }
                 }
                 & .slide.inactive {
                     transition: 3s ease;
@@ -93,7 +82,7 @@
                         position: absolute;
                         top: 449px;
                         left: 77px;
-                        font-family: 'Lexend';
+                        font-family: $lexend;
                         font-style: normal;
                         font-weight: 500;
                         font-size: 74px;
@@ -113,29 +102,17 @@
                         left: 77px;
                         top: 572px;
                         width: 560px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
                         line-height: 19px;
-    
-                        /* White */
-    
                         color: #FFFFFF;
                     }
                 }
                 & .slide.active {
                     transition: 4s ease;
                     scale: 1;
-                    // & .frame {
-                    //     transition: 2s ease;
-                    //     position: absolute;
-                    //     top: 0px;
-                    //     left: 0px;
-                    //     width: 100%;
-                    //     height: 100%;
-                    //     border: none;
-                    // }
                     & .year {
                         display: block;
                         opacity: 1;
@@ -143,7 +120,7 @@
                         position: absolute;
                         top: 449px;
                         left: 77px;
-                        font-family: 'Lexend';
+                        font-family: $lexend;
                         font-style: normal;
                         font-weight: 500;
                         font-size: 74px;
@@ -164,14 +141,11 @@
                         left: 83px;
                         top: 572px;
                         width: 560px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
                         line-height: 19px;
-    
-                        /* White */
-    
                         color: #FFFFFF;
                     }
                 }
@@ -222,17 +196,25 @@
                     align-items: center;
                     padding: 0px 48px;
                     text-transform: uppercase;
-                    width: 200px;
+                    width: 280px;
                     height: 50px;
                     color: #FFFFFF;
                     background: #1F1F1F;
                     transition: 0.5s ease;
+                    font-family: $lexend;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 20px;
+                    text-transform: uppercase;
+                    color: #FFFFFF;
                 }
                 & .btn.active {
                     background: #019748;
                 }
             }
             & .arrow-left {
+                display: none;
                 width: 20px;
                 height: 20px;
                 position: absolute;
@@ -295,6 +277,9 @@
         width: 100%; 
         height: fit-content !important;
         background: #1F1F1F;
+        transform: unset !important;
+        top: 0;
+        position: unset;
         margin: 0px !important;
         & .slider {
             width: 100%;
@@ -715,9 +700,9 @@
 
 @media (min-width: 1360px) {
     .TimeLine {
+        margin-top: 32px;
         width: 1360px;
         height: 770px;
-        margin-top: 93px;
         background: black;
         & .slider {
             width: 1360px;
@@ -772,27 +757,13 @@
                         left: 77px;
                         top: 572px;
                         width: 560px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
                         line-height: 19px;
-    
-                        /* White */
-    
                         color: #FFFFFF;
                     }
-                    // & .frame {
-                    //     transition: 2s ease;
-                    //     position: absolute;
-                    //     top: 0px;
-                    //     left: 0px;
-                    //     width: 100%;
-                    //     height: 100%;
-                    //     border: 25px solid black;
-                    //     border-top: 33px solid black;
-                    //     border-bottom: 33px solid black;
-                    // }
                 }
                 & .slide.inactive {
                     transition: 3s ease;
@@ -803,7 +774,7 @@
                         position: absolute;
                         top: 449px;
                         left: 77px;
-                        font-family: 'Lexend';
+                        font-family: $lexend;
                         font-style: normal;
                         font-weight: 500;
                         font-size: 74px;
@@ -823,29 +794,17 @@
                         left: 77px;
                         top: 572px;
                         width: 560px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
                         line-height: 19px;
-    
-                        /* White */
-    
                         color: #FFFFFF;
                     }
                 }
                 & .slide.active {
                     transition: 4s ease;
                     scale: 1;
-                    // & .frame {
-                    //     transition: 2s ease;
-                    //     position: absolute;
-                    //     top: 0px;
-                    //     left: 0px;
-                    //     width: 100%;
-                    //     height: 100%;
-                    //     border: none;
-                    // }
                     & .year {
                         display: block;
                         opacity: 1;
@@ -853,7 +812,7 @@
                         position: absolute;
                         top: 449px;
                         left: 77px;
-                        font-family: 'Lexend';
+                        font-family: $lexend;
                         font-style: normal;
                         font-weight: 500;
                         font-size: 74px;
@@ -874,14 +833,11 @@
                         left: 83px;
                         top: 572px;
                         width: 560px;
-                        font-family: 'Inter';
+                        font-family: $inter;
                         font-style: normal;
                         font-weight: 400;
                         font-size: 16px;
                         line-height: 19px;
-    
-                        /* White */
-    
                         color: #FFFFFF;
                     }
                 }
@@ -934,9 +890,15 @@
                     text-transform: uppercase;
                     width: 280px;
                     height: 72px;
-                    color: #FFFFFF;
                     background: #1F1F1F;
                     transition: .5s ease;
+                    font-family: $lexend;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 20px;
+                    text-transform: uppercase;
+                    color: #FFFFFF;
                 }
                 & .btn.active {
                     background: #019748;
