@@ -61,6 +61,7 @@ export const headerFunction = () => {
         close?.addEventListener('click', () => {
             headerContent?.classList.remove('active');
             body.style.overflow = '';
+            header.classList.remove('active');
             setTimeout(() => {
                 header.style.height = '100px';
             }, 1000);

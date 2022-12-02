@@ -9,6 +9,7 @@ import './components';
 import './elements';
 
 const rtlSwitcher = document.querySelector('.header-links-second-row .header-link.rtl');
+const mobileRtlSwitcher = document.querySelector('.Header .header-nav .header-content .content-links.first .content-link.rtl');
 
 export let rtl = false;
 
@@ -27,19 +28,16 @@ export const idx = {
     value: 0,
 };
 
-rtlSwitcher?.addEventListener('click', () => {
-    console.log(idx);
+console.log(mobileRtlSwitcher, 'switcher');
 
-    rtl ? rtlSwitcher.innerHTML = 'RTL' : rtlSwitcher.innerHTML = 'LTR';
+const switchRtlHelper = () => {
     rtl = !rtl;
     rtl ? TimeLine.classList.add('rtl') : TimeLine.classList.remove('rtl');
     rtl ? header.classList.add('rtl') : header.classList.remove('rtl');
     rtl ? footer.classList.add('rtl') : footer.classList.remove('rtl');
-    setTimeout(() => {
-        slidesWrapper.style.transition = 'none';
-        scale.style.transition = 'none';
-        btnContainer.style.transition = 'none';
-    }, 2000);
+    slidesWrapper.style.transition = 'none';
+    scale.style.transition = 'none';
+    btnContainer.style.transition = 'none';
     slidesWrapper.style.transform = rtl ? `translateX(${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
     scale.style.transform = rtl ? `translateX(-${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
     btnContainer.style.transform = rtl ? `translateX(${btnWidth * idx.value}px)` : `translateX(-${btnWidth * (idx.value - 1)}px)`;
@@ -48,5 +46,15 @@ rtlSwitcher?.addEventListener('click', () => {
         scale.style.transition = '3s ease';
         btnContainer.style.transition = ' 0.1s ease;';
     }, 2200);
+};
+mobileRtlSwitcher?.addEventListener('click', () => {
+    rtl ? mobileRtlSwitcher.innerHTML = 'RTL' : mobileRtlSwitcher.innerHTML = 'LTR';
+    switchRtlHelper();
+    console.log('clicked');
+});
+
+rtlSwitcher?.addEventListener('click', () => {
+    rtl ? rtlSwitcher.innerHTML = 'RTL' : rtlSwitcher.innerHTML = 'LTR';
+    switchRtlHelper();
 });
 

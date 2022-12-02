@@ -18,6 +18,8 @@ export const timeLineFunction = () => {
         const btn = (document.querySelector('.btn')) as HTMLElement;
         const arrowL = (document.querySelector('.arrow-left')) as HTMLElement;
         const slides = document.querySelectorAll('.slide');
+        const header = document.querySelector('.Header');
+        const headerContent = document.querySelector('.header-content');
 
         let width = slider.offsetWidth;
         let btnWidth = btn.offsetWidth;
@@ -129,12 +131,20 @@ export const timeLineFunction = () => {
         }
 
         window.addEventListener('resize', debounce(function() {
+            header?.classList.remove('active');
+            headerContent?.classList.remove('active');
             if (windowWidth < 993) {
                 slidesWrapper.style.transform = 'translateX(0px)';
                 slidesWrapper.style.transition = 'unset';
+                scale.style.transition = 'none';
+                btnContainer.style.transition = 'none';
                 removeActiveInactive(0);
             } else {
-                slidesWrapper.style.transition = '1.6s ease';
+                this.setTimeout(() => {
+                    slidesWrapper.style.transition = '1.6s ease';
+                    scale.style.transition = '3s ease';
+                    btnContainer.style.transition = ' 0.1s ease;';
+                }, 500);
                 addActiveInactive();
                 slidesWrapper.style.transform = rtl ? `translateX(${index.value * width}px)` : `translateX(-${index.value * width}px)`;
                 scale.style.transform = rtl ? `translateX(-${index.value * width}px)` : `translateX(-${index.value * width}px)`;
