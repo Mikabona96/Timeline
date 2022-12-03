@@ -58,7 +58,6 @@ export const timeLineFunction = () => {
             }
             timerId = setTimeout(() => {
                 slidesWrapper.style.transform = rtl ? `translateX(${i * width}px)` : `translateX(-${i * width}px)`;
-                slides[ i ].classList.add('active');
             }, 2000);
             scale.style.transform = rtl ? `translateX(-${i * width}px)` : `translateX(-${i * width}px)`;
         };
@@ -80,6 +79,7 @@ export const timeLineFunction = () => {
             img.src = src;
             img.addEventListener('load', () => {
                 img.parentElement?.classList.remove('lazy');
+                width > 992 ? img.parentElement?.classList.add('active') : img.parentElement?.classList.remove('active');
             });
         };
 
