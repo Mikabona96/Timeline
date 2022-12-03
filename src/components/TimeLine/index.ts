@@ -47,14 +47,16 @@ export const timeLineFunction = () => {
             });
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let timerId: any;
         const slideAnimationHandler = (i: number) => {
-            i >= 3 ? arrowL.style.display = 'block' : arrowL.style.display = 'none';
+            i > 0 ? arrowL.style.display = 'block' : arrowL.style.display = 'none';
             if (rtl && i === 0) {
                 btnContainer.style.transform = `translateX(${0}px)`;
             } else {
-                btnContainer.style.transform = rtl ? `translateX(${btnWidth * (i - 1)}px)` : `translateX(-${btnWidth * (i - 1)}px)`;
+                btnContainer.style.transform = rtl ? `translateX(${btnWidth * i}px)` : `translateX(-${btnWidth * i}px)`;
             }
-            setTimeout(() => {
+            timerId = setTimeout(() => {
                 slidesWrapper.style.transform = rtl ? `translateX(${i * width}px)` : `translateX(-${i * width}px)`;
                 slides[ i ].classList.add('active');
             }, 2000);
@@ -138,17 +140,18 @@ export const timeLineFunction = () => {
                 slidesWrapper.style.transition = 'unset';
                 scale.style.transition = 'none';
                 btnContainer.style.transition = 'none';
+                clearTimeout(timerId);
                 removeActiveInactive(0);
             } else {
                 this.setTimeout(() => {
                     slidesWrapper.style.transition = '1.6s ease';
                     scale.style.transition = '3s ease';
-                    btnContainer.style.transition = ' 0.1s ease;';
+                    btnContainer.style.transition = ' 0.3s ease;';
                 }, 500);
                 addActiveInactive();
                 slidesWrapper.style.transform = rtl ? `translateX(${index.value * width}px)` : `translateX(-${index.value * width}px)`;
                 scale.style.transform = rtl ? `translateX(-${index.value * width}px)` : `translateX(-${index.value * width}px)`;
-                btnContainer.style.transform = rtl ? `translateX(${btnWidth * (index.value - 1)}px)` : `translateX(-${btnWidth * (index.value - 1)}px)`;
+                btnContainer.style.transform = rtl ? `translateX(${btnWidth * index.value}px)` : `translateX(-${btnWidth * index.value}px)`;
             }
         }, 400));
     });

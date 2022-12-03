@@ -28,8 +28,6 @@ export const idx = {
     value: 0,
 };
 
-console.log(mobileRtlSwitcher, 'switcher');
-
 const switchRtlHelper = () => {
     rtl = !rtl;
     rtl ? TimeLine.classList.add('rtl') : TimeLine.classList.remove('rtl');
@@ -38,9 +36,15 @@ const switchRtlHelper = () => {
     slidesWrapper.style.transition = 'none';
     scale.style.transition = 'none';
     btnContainer.style.transition = 'none';
-    slidesWrapper.style.transform = rtl ? `translateX(${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
-    scale.style.transform = rtl ? `translateX(-${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
-    btnContainer.style.transform = rtl ? `translateX(${btnWidth * idx.value}px)` : `translateX(-${btnWidth * (idx.value - 1)}px)`;
+    if (width < 993) {
+        slidesWrapper.style.transform = 'translateX(0px)';
+        scale.style.transform = 'translateX(0px)';
+        btnContainer.style.transform = 'translateX(0px)';
+    } else {
+        slidesWrapper.style.transform = rtl ? `translateX(${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
+        scale.style.transform = rtl ? `translateX(-${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
+        btnContainer.style.transform = rtl ? `translateX(${btnWidth * idx.value}px)` : `translateX(-${btnWidth * (idx.value - 1)}px)`;
+    }
     setTimeout(() => {
         slidesWrapper.style.transition = '1.6s ease';
         scale.style.transition = '3s ease';
@@ -49,12 +53,17 @@ const switchRtlHelper = () => {
 };
 mobileRtlSwitcher?.addEventListener('click', () => {
     rtl ? mobileRtlSwitcher.innerHTML = 'RTL' : mobileRtlSwitcher.innerHTML = 'LTR';
+    rtl ? rtlSwitcher!.innerHTML = 'RTL' : rtlSwitcher!.innerHTML = 'LTR';
     switchRtlHelper();
-    console.log('clicked');
 });
 
 rtlSwitcher?.addEventListener('click', () => {
     rtl ? rtlSwitcher.innerHTML = 'RTL' : rtlSwitcher.innerHTML = 'LTR';
+    rtl ? mobileRtlSwitcher!.innerHTML = 'RTL' : mobileRtlSwitcher!.innerHTML = 'LTR';
     switchRtlHelper();
 });
 
+
+window.addEventListener('resize', () => {
+    width = slider.offsetWidth;
+});
