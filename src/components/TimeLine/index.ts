@@ -34,10 +34,15 @@ export const timeLineFunction = () => {
         });
 
         // ============== Slides Navigation ==============
-        const removeActiveSlide = () => {
-            slides.forEach((slide) => {
+        const removeActiveSlide = (idx: number) => {
+            slides.forEach((slide, i) => {
                 slide.classList.remove('active');
                 slide.classList.add('inactive');
+                if (i === idx) {
+                    setTimeout(()=> {
+                        slide.classList.add('active');
+                    }, 2100);
+                }
             });
         };
 
@@ -64,7 +69,7 @@ export const timeLineFunction = () => {
 
         btns.forEach((btn, i) => {
             btn.addEventListener('click', () => {
-                removeActiveSlide();
+                removeActiveSlide(i);
                 btnRemoveActive(i);
                 index.value = i;
                 slideAnimationHandler(index.value);
@@ -79,7 +84,6 @@ export const timeLineFunction = () => {
             img.src = src;
             img.addEventListener('load', () => {
                 img.parentElement?.classList.remove('lazy');
-                width > 992 ? img.parentElement?.classList.add('active') : img.parentElement?.classList.remove('active');
             });
         };
 
@@ -93,7 +97,7 @@ export const timeLineFunction = () => {
                 const target = entry.target as HTMLImageElement;
                 if (entry.isIntersecting) {
                     preloadImage(target);
-                    imgObserver.unobserve(entry.target);
+                    imgObserver.unobserve(target);
                 }
             });
         }, imgOptions);
