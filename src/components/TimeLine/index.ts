@@ -45,7 +45,6 @@ export const timeLineFunction = () => {
             } else {
                 btnContainer.style.transform = `translateX(${rtl ? '' : '-'}${(index.value - 1) * btnWidth}px)`;
             }
-            console.log('clicked', btnWidth);
         };
 
         btns.forEach((btn, i) => {
