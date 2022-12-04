@@ -98,6 +98,10 @@ export const timeLineFunction = () => {
             });
         };
 
+        if (windowWidth < 993) {
+            toggleActiveInactive();
+        }
+
         function debounce<F extends (...params: any[]) => void>(fn: F, delay: number) {
             // eslint-disable-next-line init-declarations
             let timeoutID: number;
