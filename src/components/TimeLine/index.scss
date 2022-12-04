@@ -211,35 +211,7 @@
                 }
                 & .btn.active {
                     background: #019748;
-                }
-            }
-            & .arrow-left {
-                display: none;
-                width: 20px;
-                height: 20px;
-                position: absolute;
-                bottom: 1%;
-                transform: translateY(-53%);
-                cursor: pointer;
-                &::before {
-                    content: "";
-                    position: absolute;
-                    left: 13px;
-                    top: 0px;
-                    height: 16px;
-                    width: 2px;
-                    background: #fff;
-                    transform: rotate(52deg);
-                }
-                &::after {
-                    content: "";
-                    position: absolute;
-                    left: 13px;
-                    top: 9px;
-                    height: 16px;
-                    width: 2px;
-                    background: #fff;
-                    transform: rotate(-52deg);
+                    transition: 1s ease;
                 }
             }
         }
@@ -264,10 +236,6 @@
             & .buttons {
                 flex-direction: row-reverse;
             }
-            & .arrow-left {
-                right: 1%;
-                transform: translateY(-25%) rotate(180deg);
-            }
         }
     }
 }
@@ -285,9 +253,6 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            & .arrow-left {
-                display: none;
-            }
             & .scales {
                 display: none;
             }
@@ -901,36 +866,8 @@
                     color: #FFFFFF;
                 }
                 & .btn.active {
+                    transition: 1s ease;
                     background: #019748;
-                }
-            }
-            & .arrow-left {
-                display: none;
-                width: 20px;
-                height: 20px;
-                position: absolute;
-                bottom: 15%;
-                transform: translateY(-29%);     
-                cursor: pointer;
-                &::before {
-                    content: "";
-                    position: absolute;
-                    left: 13px;
-                    top: 0px;
-                    height: 16px;
-                    width: 2px;
-                    background: #fff;
-                    transform: rotate(52deg);
-                }
-                &::after {
-                    content: "";
-                    position: absolute;
-                    left: 13px;
-                    top: 9px;
-                    height: 16px;
-                    width: 2px;
-                    background: #fff;
-                    transform: rotate(-52deg);
                 }
             }
         }
@@ -944,11 +881,6 @@
             & .scales {
                 display: flex;
                 flex-direction: row-reverse;
-            }
-            & .arrow-left {
-                left: auto;
-                right: 25px;
-                transform: rotate(180deg);
             }
             & .slides {
                 display: flex;

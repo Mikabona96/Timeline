@@ -45,6 +45,7 @@ export const timeLineFunction = () => {
             } else {
                 btnContainer.style.transform = `translateX(${rtl ? '' : '-'}${(index.value - 1) * btnWidth}px)`;
             }
+            console.log('clicked', btnWidth);
         };
 
         btns.forEach((btn, i) => {
@@ -91,10 +92,13 @@ export const timeLineFunction = () => {
             imgObserver.observe(slide);
         });
 
-        const toggleActiveInactive = () => {
-            slides.forEach((slide) => {
+        const toggleActiveInactive = (flag?: boolean) => {
+            slides.forEach((slide, i) => {
                 slide.classList.remove('active');
                 slide.classList.remove('inactive');
+                if (flag) {
+                    index.value === i ? slide.classList.add('active') : slide.classList.add('inactive');
+                }
             });
         };
 
@@ -111,6 +115,7 @@ export const timeLineFunction = () => {
                 timeoutID = window.setTimeout(() => fn.apply(this, args), delay);
                 windowWidth = window.innerWidth;
                 width = slider.offsetWidth;
+                btnWidth = btn.offsetWidth;
             } as F;
         }
 
@@ -122,6 +127,7 @@ export const timeLineFunction = () => {
                 slidesWrapper.style.transform = 'translateX(0px)';
                 slidesWrapper.style.transition = '0s';
             } else {
+                toggleActiveInactive(true);
                 slidesWrapper.style.transform = `translateX(${rtl ? '' : '-'}${index.value * width}px)`;
                 if (index.value === 0) {
                     btnContainer.style.transform = `translateX(${rtl ? '' : '-'}${index.value * btnWidth}px)`;
