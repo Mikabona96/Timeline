@@ -23,6 +23,8 @@ const slider =  (document.querySelector('.slider')) as HTMLElement;
 const btn = (document.querySelector('.btn')) as HTMLElement;
 let btnWidth = btn.offsetWidth;
 let width = slider.offsetWidth;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let windowWidth = window.innerWidth;
 
 export const idx = {
     value: 0,
@@ -41,9 +43,13 @@ const switchRtlHelper = () => {
         scale.style.transform = 'translateX(0px)';
         btnContainer.style.transform = 'translateX(0px)';
     } else {
-        slidesWrapper.style.transform = rtl ? `translateX(${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
-        scale.style.transform = rtl ? `translateX(-${idx.value * width}px)` : `translateX(-${idx.value * width}px)`;
-        btnContainer.style.transform = rtl ? `translateX(${btnWidth * idx.value}px)` : `translateX(-${btnWidth * (idx.value - 1)}px)`;
+        slidesWrapper.style.transform = `translateX(${rtl ? '' : '-'}${idx.value * width}px)`;
+        scale.style.transform = `translateX(${rtl ? '-' : '-'}${idx.value * width}px)`;
+        if (idx.value === 0) {
+            btnContainer.style.transform = `translateX(${rtl ? '' : '-'}${idx.value * btnWidth}px)`;
+        } else {
+            btnContainer.style.transform = `translateX(${rtl ? '' : '-'}${(idx.value - 1) * btnWidth}px)`;
+        }
     }
     setTimeout(() => {
         slidesWrapper.style.transition = '1.6s ease';
@@ -66,4 +72,5 @@ rtlSwitcher?.addEventListener('click', () => {
 
 window.addEventListener('resize', () => {
     width = slider.offsetWidth;
+    windowWidth = window.innerWidth;
 });
